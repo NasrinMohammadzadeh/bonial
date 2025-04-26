@@ -20,8 +20,13 @@ fun ProductListResponse.mapToModel(): ProductListModel{
                 )
 
                 ContentDetailModel(
-                    content.id,
-                    content.title
+                    id = content.id,
+                    title = content.title,
+                    brochureImage = content.brochureImage,
+                    type = item.contentType,
+                    publisher = ProductListModel.PublisherModel(
+                        content.publisher.name
+                    )
                 )
             }
 
