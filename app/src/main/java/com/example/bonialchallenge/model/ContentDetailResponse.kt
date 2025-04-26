@@ -1,6 +1,6 @@
 package com.example.bonialchallenge.model
 
-data class ContentDetail(
+data class ContentDetailResponse(
     val id: Long,
     val contentId: String,
     val title: String,
@@ -11,13 +11,13 @@ data class ContentDetail(
     val type: String,
     val brochureImage: String,
     val pageCount: Long,
-    val publisher: Publisher,
+    val publisher: PublisherResponse,
     val contentBadges: List<Any?>,
     val distance: Double,
     val hideValidityDate: Boolean,
-    val closestStore: ClosestStore
+    val closestStore: ClosestStoreResponse
 ){
-    data class ClosestStore(
+    data class ClosestStoreResponse(
         val id: String,
         val latitude: Double,
         val longitude: Double,
@@ -27,7 +27,7 @@ data class ContentDetail(
         val city: String
     )
 
-    data class Publisher(
+    data class PublisherResponse(
         val id: String,
         val name: String,
         val type: String
