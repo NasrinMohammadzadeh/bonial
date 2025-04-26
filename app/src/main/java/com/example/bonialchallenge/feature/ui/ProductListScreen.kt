@@ -13,8 +13,7 @@ import com.example.bonialchallenge.feature.viewmodel.ProductListViewModel
 
 @Composable
 fun ProductListScreen(
-    viewModel: ProductListViewModel,
-    modifier: Modifier
+    viewModel: ProductListViewModel
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -44,7 +43,6 @@ fun ProductListScreen(
     }
 
     ProductListComponent(
-        modifier,
         uiState
     )
 }

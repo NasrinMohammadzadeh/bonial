@@ -1,11 +1,7 @@
 package com.example.bonialchallenge.feature.ui
 
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
+
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,25 +15,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.bonialchallenge.feature.ui.model.ProductListModel.*
 import com.example.bonialchallenge.feature.ui.model.ProductUiState
-import com.example.bonialchallenge.ui.theme.LightGrey
-import com.example.bonialchallenge.ui.theme.ProgressBackground
-import com.example.bonialchallenge.ui.theme.White
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
@@ -46,11 +29,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.bonialchallenge.R
 
 @Composable
-fun ProductListComponent(modifier: Modifier, uiState: ProductUiState) {
+fun ProductListComponent(uiState: ProductUiState) {
 
     uiState.contents?.let {
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().padding(start = 8.dp, top = 8.dp)
         ) {
             items(
                 it.chunked(2)
@@ -64,14 +47,14 @@ fun ProductListComponent(modifier: Modifier, uiState: ProductUiState) {
                         PremiumItem(rowItems.first(), Modifier.fillMaxWidth())
                     } else if (rowItems.any { it.type == "brochurePremium" }) {
                         Column(
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                            modifier = Modifier.padding(end = 8.dp),
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
                             rowItems.forEach { item ->
                                 PremiumItem(item, Modifier.fillMaxWidth())
                             }
                         }
                     } else {
-                        // Otherwise normal two items in a row
                         rowItems.forEach { item ->
                             NormalItem(item, Modifier.weight(1f))
                             Spacer(modifier = Modifier.width(8.dp))
@@ -85,7 +68,6 @@ fun ProductListComponent(modifier: Modifier, uiState: ProductUiState) {
 
 @Composable
 private fun PremiumItem(content: ContentDetailModel, modifier: Modifier) {
-    Spacer(modifier = Modifier.width(8.dp))
     Card(
         modifier = modifier
     ) {
@@ -134,54 +116,4 @@ fun NormalItem(content: ContentDetailModel, modifier: Modifier) {
             )
         }
     }
-}
-
-@Composable
-private fun ShimmerCard() {
-    Column(
-        modifier = Modifier
-            .shimmer()
-            .background(White, shape = RectangleShape)
-            .fillMaxWidth()
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
-    ) {
-
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-                .shimmer()
-        )
-
-    }
-}
-
-
-fun Modifier.shimmer(): Modifier = composed {
-
-    var size by remember {
-        mutableStateOf(IntSize.Zero)
-    }
-    val transition = rememberInfiniteTransition(label = "transition")
-    val startOffsetX by transition.animateFloat(
-        initialValue = -2 * size.width.toFloat(),
-        targetValue = 2 * size.width.toFloat(),
-        animationSpec = infiniteRepeatable(
-            animation = tween(1500)
-        ), label = "shimmerAnimation"
-    )
-    background(
-        brush = Brush.linearGradient(
-            colors = listOf(
-                ProgressBackground,
-                LightGrey,
-                ProgressBackground
-            ),
-            start = Offset(startOffsetX, 0f),
-            end = Offset(startOffsetX + size.width.toFloat(), size.height.toFloat())
-        )
-    )
-        .onGloballyPositioned {
-            size = it.size
-        }
 }
