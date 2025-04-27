@@ -1,4 +1,4 @@
-package com.example.bonialchallenge.feature.ui
+package com.example.bonialchallenge.presentation.feature.ui
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -26,9 +26,9 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import com.example.bonialchallenge.ui.theme.LightGrey
-import com.example.bonialchallenge.ui.theme.ProgressBackground
-import com.example.bonialchallenge.ui.theme.White
+import com.example.bonialchallenge.presentation.theme.LightGrey
+import com.example.bonialchallenge.presentation.theme.ProgressBackground
+import com.example.bonialchallenge.presentation.theme.White
 
 @Composable
 fun LoadingScreen(modifier: Modifier) {

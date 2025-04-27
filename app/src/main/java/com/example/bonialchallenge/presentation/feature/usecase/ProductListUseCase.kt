@@ -1,8 +1,8 @@
-package com.example.bonialchallenge.feature.usecase
+package com.example.bonialchallenge.presentation.feature.usecase
 
 import com.example.bonialchallenge.di.IoDispatcher
-import com.example.bonialchallenge.feature.repository.ProductListRepository
-import com.example.bonialchallenge.feature.ui.model.ProductDataState
+import com.example.bonialchallenge.presentation.feature.repository.ProductListRepository
+import com.example.bonialchallenge.presentation.feature.ui.model.ProductDataState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext

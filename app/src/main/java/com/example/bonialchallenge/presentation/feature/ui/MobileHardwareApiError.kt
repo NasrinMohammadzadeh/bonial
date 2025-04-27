@@ -1,4 +1,4 @@
-package com.example.bonialchallenge.feature.ui
+package com.example.bonialchallenge.presentation.feature.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,8 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.bonialchallenge.R
 import com.example.bonialchallenge.network.MVVMException
-import com.example.bonialchallenge.ui.theme.Typography
-import com.example.bonialchallenge.ui.theme.White
+import com.example.bonialchallenge.presentation.theme.Typography
+import com.example.bonialchallenge.presentation.theme.White
 
 @Composable
 fun MobileHardwareApiError(

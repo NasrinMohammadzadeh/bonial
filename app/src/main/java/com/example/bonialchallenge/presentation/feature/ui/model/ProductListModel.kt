@@ -1,4 +1,4 @@
-package com.example.bonialchallenge.feature.ui.model
+package com.example.bonialchallenge.presentation.feature.ui.model
 
 import androidx.compose.runtime.Stable
 

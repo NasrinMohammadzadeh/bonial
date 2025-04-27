@@ -1,10 +1,10 @@
-package com.example.bonialchallenge.ui
+package com.example.bonialchallenge.presentation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.bonialchallenge.network.MVVMException
-import com.example.bonialchallenge.ui.theme.MyApplicationTheme
+import com.example.bonialchallenge.presentation.theme.MyApplicationTheme
 
 @Composable
 fun MobileHardwareBaseScreen(

@@ -1,7 +1,7 @@
 package com.example.bonialchallenge.di
 
-import com.example.bonialchallenge.feature.repository.ProductListRepository
-import com.example.bonialchallenge.feature.repository.ProductListRepositoryImpl
+import com.example.bonialchallenge.presentation.feature.repository.ProductListRepository
+import com.example.bonialchallenge.presentation.feature.repository.ProductListRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

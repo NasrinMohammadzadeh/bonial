@@ -1,4 +1,4 @@
-package com.example.bonialchallenge.ui.theme
+package com.example.bonialchallenge.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

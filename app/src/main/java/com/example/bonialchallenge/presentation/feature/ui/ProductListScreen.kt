@@ -1,4 +1,4 @@
-package com.example.bonialchallenge.feature.ui
+package com.example.bonialchallenge.presentation.feature.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -9,11 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import com.example.bonialchallenge.feature.viewmodel.ProductListViewModel
+import com.example.bonialchallenge.presentation.feature.viewmodel.ProductListViewModel
 
 @Composable
 fun ProductListScreen(
-    viewModel: ProductListViewModel
+    viewModel: ProductListViewModel,
+    modifier: Modifier
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -41,8 +42,15 @@ fun ProductListScreen(
             lifecycleOwner.lifecycle.removeObserver(observer)
         }
     }
+   uiState.contents?.let {
+       ProductListComponent(it)
+   }
 
-    ProductListComponent(
-        uiState
-    )
+    uiState.error?.let {
+        MobileHardwareApiError(it.baseError, viewModel::onRetry)
+    }
+
+    if (uiState.isLoading){
+        LoadingScreen(modifier)
+    }
 }

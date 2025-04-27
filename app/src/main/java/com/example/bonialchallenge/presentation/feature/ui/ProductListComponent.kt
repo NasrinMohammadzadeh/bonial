@@ -1,4 +1,4 @@
-package com.example.bonialchallenge.feature.ui
+package com.example.bonialchallenge.presentation.feature.ui
 
 
 import androidx.compose.foundation.Image
@@ -19,8 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.bonialchallenge.feature.ui.model.ProductListModel.*
-import com.example.bonialchallenge.feature.ui.model.ProductUiState
+import com.example.bonialchallenge.presentation.feature.ui.model.ProductListModel.*
 import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
@@ -29,9 +28,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.bonialchallenge.R
 
 @Composable
-fun ProductListComponent(uiState: ProductUiState) {
+fun ProductListComponent(contents: List<ContentDetailModel>?) {
 
-    uiState.contents?.let {
+    contents?.let {
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(start = 8.dp, top = 8.dp)
         ) {
